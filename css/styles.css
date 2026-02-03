@@ -254,11 +254,31 @@ label {
   font-weight: 600;
 }
 
+input,
 select {
   border-radius: 12px;
   border: 1px solid var(--border);
   padding: 10px 12px;
   background: #fff;
+  font-family: inherit;
+}
+
+.form {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin-top: 16px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.status {
+  margin-top: 16px;
+  color: var(--muted);
 }
 
 .table {
