@@ -2,20 +2,32 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const sql = require('mssql');
+require('msnodesqlv8');
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-const dbConfig = {
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  server: process.env.DB_SERVER,
-  database: process.env.DB_NAME,
-  options: {
-    encrypt: false,
-    trustServerCertificate: true
-  }
-};
+const useWindowsAuth = String(process.env.DB_USE_WINDOWS_AUTH || '').toLowerCase() === 'true';
+
+const dbConfig = useWindowsAuth
+  ? {
+      server: process.env.DB_SERVER,
+      database: process.env.DB_NAME,
+      driver: 'msnodesqlv8',
+      options: {
+        trustedConnection: true
+      }
+    }
+  : {
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      server: process.env.DB_SERVER,
+      database: process.env.DB_NAME,
+      options: {
+        encrypt: false,
+        trustServerCertificate: true
+      }
+    };
 
 app.use(cors());
 app.use(express.json());
