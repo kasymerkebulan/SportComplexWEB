@@ -31,8 +31,8 @@
           <code>vw_FinancialOverview</code> и <code>vw_AttendanceAnalysis</code>.
         </p>
         <div class="button-row">
-          <button class="primary" data-action="alert">Создать событие</button>
-          <button class="ghost" data-action="alert">Экспортировать отчет</button>
+          <button class="primary" data-modal-target="eventModal">Создать событие</button>
+          <button class="ghost" data-action="download-report">Экспортировать отчет</button>
         </div>
       </div>
       <div class="hero-stats">
@@ -68,7 +68,7 @@
             <span class="badge warning">3.9 ★</span>
           </li>
         </ul>
-        <button class="ghost" data-action="alert">Управление комплексами</button>
+        <button class="ghost" data-modal-target="complexModal">Управление комплексами</button>
       </article>
 
       <article class="card">
@@ -77,17 +77,19 @@
           <li>
             <strong>Детское плавание</strong>
             <span class="badge danger">Осталось 2 места</span>
+            <button class="ghost" data-modal-target="enrollmentModal" data-section-name="Детское плавание" data-complex-id="1">Открыть набор</button>
           </li>
           <li>
             <strong>Йога для всех</strong>
             <span class="badge danger">Осталось 4 места</span>
+            <button class="ghost" data-modal-target="enrollmentModal" data-section-name="Йога для всех" data-complex-id="5">Открыть набор</button>
           </li>
           <li>
             <strong>Хоккейная школа</strong>
             <span class="badge warning">Осталось 6 мест</span>
+            <button class="ghost" data-modal-target="enrollmentModal" data-section-name="Хоккейная школа" data-complex-id="4">Открыть набор</button>
           </li>
         </ul>
-        <button class="ghost" data-action="alert">Открыть набор</button>
       </article>
 
       <article class="card">
@@ -106,7 +108,7 @@
           </div>
           <span class="status-icon">🔧</span>
         </div>
-        <button class="ghost" data-action="alert">Планировать обслуживание</button>
+        <button class="ghost" data-action="maintenance" data-equipment-id="11" data-status="На обслуживании">Планировать обслуживание</button>
       </article>
     </section>
 
@@ -155,6 +157,102 @@
       </div>
     </section>
   </main>
+
+  <div class="modal" id="eventModal" aria-hidden="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Создать событие</h3>
+        <button class="icon-button" data-modal-close>×</button>
+      </div>
+      <form class="form" data-event-form>
+        <label>
+          Название события
+          <input type="text" name="eventName" required placeholder="Мастер-класс" />
+        </label>
+        <label>
+          Комплекс
+          <select name="complexId" data-complex-select required></select>
+        </label>
+        <label>
+          Дата
+          <input type="date" name="eventDate" required />
+        </label>
+        <label>
+          Время начала
+          <input type="time" name="startTime" />
+        </label>
+        <label>
+          Время окончания
+          <input type="time" name="endTime" />
+        </label>
+        <label>
+          Тип события
+          <input type="text" name="eventType" placeholder="Соревнование" />
+        </label>
+        <label>
+          Максимум участников
+          <input type="number" name="maxParticipants" min="1" placeholder="50" />
+        </label>
+        <label>
+          Описание
+          <textarea name="description" rows="3" placeholder="Краткое описание"></textarea>
+        </label>
+        <div class="form-actions">
+          <button class="primary" type="submit">Сохранить</button>
+          <button class="ghost" type="button" data-modal-close>Отмена</button>
+        </div>
+      </form>
+      <p class="status" data-event-status>Готово к добавлению события.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="enrollmentModal" aria-hidden="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Открыть набор</h3>
+        <button class="icon-button" data-modal-close>×</button>
+      </div>
+      <p class="muted">Сделаем объявление о наборе в выбранную секцию.</p>
+      <form class="form" data-enrollment-form>
+        <label>
+          Название секции
+          <input type="text" name="sectionName" readonly />
+        </label>
+        <label>
+          Комплекс
+          <select name="complexId" data-complex-select required></select>
+        </label>
+        <label>
+          Дата старта
+          <input type="date" name="eventDate" required />
+        </label>
+        <label>
+          Время
+          <input type="time" name="startTime" />
+        </label>
+        <label>
+          Максимум участников
+          <input type="number" name="maxParticipants" min="1" placeholder="20" />
+        </label>
+        <div class="form-actions">
+          <button class="primary" type="submit">Опубликовать</button>
+          <button class="ghost" type="button" data-modal-close>Отмена</button>
+        </div>
+      </form>
+      <p class="status" data-enrollment-status>Готово к публикации.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="complexModal" aria-hidden="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Список комплексов</h3>
+        <button class="icon-button" data-modal-close>×</button>
+      </div>
+      <ul class="list" data-complex-list></ul>
+      <p class="status" data-complex-status>Загрузка...</p>
+    </div>
+  </div>
 
   <footer class="site-footer">
     <p>© 2024 SportComplexesDistrictDB • Админ-панель</p>
