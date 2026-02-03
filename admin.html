@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SportComplexesDistrictDB — Админ-панель</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <div class="logo">SC</div>
+      <div>
+        <p class="brand-title">SportComplexesDistrictDB</p>
+        <p class="brand-subtitle">Админ-панель</p>
+      </div>
+    </div>
+    <nav class="site-nav">
+      <a href="index.html">Пользователь</a>
+      <a class="active" href="admin.html">Админ-панель</a>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <section class="card hero admin-hero">
+      <div>
+        <p class="eyebrow">Управление</p>
+        <h1>Контроль секций, тренеров и загрузки комплексов в реальном времени.</h1>
+        <p class="lead">
+          Дашборд собирает показатели из представлений <code>vw_ComplexStatistics</code>,
+          <code>vw_FinancialOverview</code> и <code>vw_AttendanceAnalysis</code>.
+        </p>
+        <div class="button-row">
+          <button class="primary">Создать событие</button>
+          <button class="ghost">Экспортировать отчет</button>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <p class="stat">₽ 3,2 млн</p>
+          <p>Доход за месяц</p>
+        </div>
+        <div>
+          <p class="stat">87%</p>
+          <p>Заполненность</p>
+        </div>
+        <div>
+          <p class="stat">42</p>
+          <p>Тренера</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Комплексы</h2>
+        <ul class="list">
+          <li>
+            <strong>СпортЛайф Центр</strong>
+            <span class="badge success">4.8 ★</span>
+          </li>
+          <li>
+            <strong>Северная Арена</strong>
+            <span class="badge success">4.5 ★</span>
+          </li>
+          <li>
+            <strong>Южный Олимп</strong>
+            <span class="badge warning">3.9 ★</span>
+          </li>
+        </ul>
+        <button class="ghost">Управление комплексами</button>
+      </article>
+
+      <article class="card">
+        <h2>Секции с дефицитом мест</h2>
+        <ul class="list">
+          <li>
+            <strong>Детское плавание</strong>
+            <span class="badge danger">Осталось 2 места</span>
+          </li>
+          <li>
+            <strong>Йога для всех</strong>
+            <span class="badge danger">Осталось 4 места</span>
+          </li>
+          <li>
+            <strong>Хоккейная школа</strong>
+            <span class="badge warning">Осталось 6 мест</span>
+          </li>
+        </ul>
+        <button class="ghost">Открыть набор</button>
+      </article>
+
+      <article class="card">
+        <h2>Контроль оборудования</h2>
+        <div class="equipment">
+          <div>
+            <p class="muted">Футбольные ворота</p>
+            <p class="event-title">Требует ремонта</p>
+          </div>
+          <span class="status-icon">⚠️</span>
+        </div>
+        <div class="equipment">
+          <div>
+            <p class="muted">Беговая дорожка</p>
+            <p class="event-title">На обслуживании</p>
+          </div>
+          <span class="status-icon">🔧</span>
+        </div>
+        <button class="ghost">Планировать обслуживание</button>
+      </article>
+    </section>
+
+    <section class="card">
+      <h2>Управление пользователями</h2>
+      <div class="table">
+        <div class="table-row header">
+          <span>Посетитель</span>
+          <span>Секции</span>
+          <span>Последний визит</span>
+          <span>Статус</span>
+        </div>
+        <div class="table-row">
+          <span>Игорь Николаев</span>
+          <span>Плавание, Теннис</span>
+          <span>06.10.2023</span>
+          <span class="badge success">Активен</span>
+        </div>
+        <div class="table-row">
+          <span>Светлана Ковалева</span>
+          <span>Хоккей</span>
+          <span>02.10.2023</span>
+          <span class="badge warning">Приостановлен</span>
+        </div>
+        <div class="table-row">
+          <span>Юлия Титова</span>
+          <span>Дзюдо</span>
+          <span>03.10.2023</span>
+          <span class="badge success">Активен</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2024 SportComplexesDistrictDB • Админ-панель</p>
+  </footer>
+  <script src="js/app.js"></script>
+</body>
+</html>
