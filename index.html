@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SportComplexesDistrictDB — Пользователь</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <div class="logo">SC</div>
+      <div>
+        <p class="brand-title">SportComplexesDistrictDB</p>
+        <p class="brand-subtitle">Портал посетителей спортивных комплексов</p>
+      </div>
+    </div>
+    <nav class="site-nav">
+      <a class="active" href="index.html">Пользователь</a>
+      <a href="admin.html">Админ-панель</a>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <section class="card hero">
+      <div>
+        <p class="eyebrow">Добро пожаловать</p>
+        <h1>Записывайтесь в секции, следите за событиями и управляйте абонементами.</h1>
+        <p class="lead">
+          Интерфейс подключается к базе <strong>SportComplexesDistrictDB</strong> и
+          показывает секции, расписание и события в выбранном комплексе.
+        </p>
+        <div class="button-row">
+          <button class="primary" data-action="alert">Записаться в секцию</button>
+          <button class="ghost" data-action="alert">Посмотреть расписание</button>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <p class="stat">7</p>
+          <p>Комплексов</p>
+        </div>
+        <div>
+          <p class="stat">12</p>
+          <p>Объектов</p>
+        </div>
+        <div>
+          <p class="stat">10</p>
+          <p>Секций</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Мой абонемент</h2>
+        <p class="muted">Статус: активен</p>
+        <ul class="list">
+          <li><strong>Секция:</strong> Детское плавание</li>
+          <li><strong>Период:</strong> 15.01.2023 — 15.07.2023</li>
+          <li><strong>Оплачено:</strong> 21 000 ₽</li>
+        </ul>
+        <button class="ghost" data-action="alert">Продлить</button>
+      </article>
+
+      <article class="card">
+        <h2>Ближайшие занятия</h2>
+        <ul class="list">
+          <li>
+            <span>Пн, 16:00</span>
+            <span class="badge">Бассейн 1</span>
+            <strong>Детское плавание</strong>
+          </li>
+          <li>
+            <span>Ср, 07:00</span>
+            <span class="badge">Зал йоги</span>
+            <strong>Йога для всех</strong>
+          </li>
+          <li>
+            <span>Сб, 10:00</span>
+            <span class="badge">Волейбол</span>
+            <strong>Волейбол продвинутый</strong>
+          </li>
+        </ul>
+        <button class="ghost" data-action="alert">Все занятия</button>
+      </article>
+
+      <article class="card">
+        <h2>События</h2>
+        <div class="event">
+          <div>
+            <p class="muted">15.11.2023</p>
+            <p class="event-title">Открытый турнир по теннису</p>
+          </div>
+          <button class="secondary" data-action="alert">Записаться</button>
+        </div>
+        <div class="event">
+          <div>
+            <p class="muted">20.11.2023</p>
+            <p class="event-title">Мастер-класс по йоге</p>
+          </div>
+          <button class="secondary" data-action="alert">Записаться</button>
+        </div>
+      </article>
+    </section>
+
+    <section class="card">
+      <h2>Выбор комплекса</h2>
+      <p class="muted">Выберите комплекс, чтобы видеть актуальные расписание и услуги.</p>
+      <div class="filters">
+        <label>
+          Район
+          <select>
+            <option>Центральный</option>
+            <option>Северный</option>
+            <option>Южный</option>
+            <option>Западный</option>
+            <option>Восточный</option>
+          </select>
+        </label>
+        <label>
+          Комплекс
+          <select>
+            <option>СпортЛайф Центр</option>
+            <option>Центр Здоровья</option>
+            <option>Северная Арена</option>
+            <option>Северное Сияние</option>
+          </select>
+        </label>
+        <label>
+          Тип секции
+          <select>
+            <option>Плавание</option>
+            <option>Йога</option>
+            <option>Футбол</option>
+          </select>
+        </label>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2024 SportComplexesDistrictDB • Пользовательский портал</p>
+  </footer>
+  <script src="js/app.js"></script>
+</body>
+</html>

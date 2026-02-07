@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SportComplexesDistrictDB — Админ-панель</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <div class="logo">SC</div>
+      <div>
+        <p class="brand-title">SportComplexesDistrictDB</p>
+        <p class="brand-subtitle">Админ-панель</p>
+      </div>
+    </div>
+    <nav class="site-nav">
+      <a href="index.html">Пользователь</a>
+      <a class="active" href="admin.html">Админ-панель</a>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <section class="card hero admin-hero">
+      <div>
+        <p class="eyebrow">Управление</p>
+        <h1>Контроль секций, тренеров и загрузки комплексов в реальном времени.</h1>
+        <p class="lead">
+          Дашборд собирает показатели из представлений <code>vw_ComplexStatistics</code>,
+          <code>vw_FinancialOverview</code> и <code>vw_AttendanceAnalysis</code>.
+        </p>
+        <div class="button-row">
+          <button class="primary" data-modal-target="eventModal">Создать событие</button>
+          <button class="ghost" data-action="download-report">Экспортировать отчет</button>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <p class="stat">₽ 3,2 млн</p>
+          <p>Доход за месяц</p>
+        </div>
+        <div>
+          <p class="stat">87%</p>
+          <p>Заполненность</p>
+        </div>
+        <div>
+          <p class="stat">42</p>
+          <p>Тренера</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Комплексы</h2>
+        <ul class="list">
+          <li>
+            <strong>СпортЛайф Центр</strong>
+            <span class="badge success">4.8 ★</span>
+          </li>
+          <li>
+            <strong>Северная Арена</strong>
+            <span class="badge success">4.5 ★</span>
+          </li>
+          <li>
+            <strong>Южный Олимп</strong>
+            <span class="badge warning">3.9 ★</span>
+          </li>
+        </ul>
+        <button class="ghost" data-modal-target="complexModal">Управление комплексами</button>
+      </article>
+
+      <article class="card">
+        <h2>Секции с дефицитом мест</h2>
+        <ul class="list">
+          <li>
+            <strong>Детское плавание</strong>
+            <span class="badge danger">Осталось 2 места</span>
+            <button class="ghost" data-modal-target="enrollmentModal" data-section-name="Детское плавание" data-complex-id="1">Открыть набор</button>
+          </li>
+          <li>
+            <strong>Йога для всех</strong>
+            <span class="badge danger">Осталось 4 места</span>
+            <button class="ghost" data-modal-target="enrollmentModal" data-section-name="Йога для всех" data-complex-id="5">Открыть набор</button>
+          </li>
+          <li>
+            <strong>Хоккейная школа</strong>
+            <span class="badge warning">Осталось 6 мест</span>
+            <button class="ghost" data-modal-target="enrollmentModal" data-section-name="Хоккейная школа" data-complex-id="4">Открыть набор</button>
+          </li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Контроль оборудования</h2>
+        <div class="equipment">
+          <div>
+            <p class="muted">Футбольные ворота</p>
+            <p class="event-title">Требует ремонта</p>
+          </div>
+          <span class="status-icon">⚠️</span>
+        </div>
+        <div class="equipment">
+          <div>
+            <p class="muted">Беговая дорожка</p>
+            <p class="event-title">На обслуживании</p>
+          </div>
+          <span class="status-icon">🔧</span>
+        </div>
+        <button class="ghost" data-action="maintenance" data-equipment-id="11" data-status="На обслуживании">Планировать обслуживание</button>
+      </article>
+    </section>
+
+    <section class="card">
+      <h2>Добавить посетителя</h2>
+      <p class="muted">Данные сохраняются в таблицу <code>Visitors</code> базы SportComplexesDistrictDB.</p>
+      <form class="form" data-visitor-form>
+        <label>
+          Имя
+          <input type="text" name="firstName" required placeholder="Иван" />
+        </label>
+        <label>
+          Фамилия
+          <input type="text" name="lastName" required placeholder="Петров" />
+        </label>
+        <label>
+          Дата рождения
+          <input type="date" name="birthDate" />
+        </label>
+        <label>
+          Телефон
+          <input type="tel" name="phone" placeholder="+7 (999) 123-45-67" />
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" placeholder="user@mail.ru" />
+        </label>
+        <div class="form-actions">
+          <button class="primary" type="submit">Сохранить</button>
+          <button class="ghost" type="reset">Очистить</button>
+        </div>
+      </form>
+      <p class="status" data-visitor-status>Готово к работе.</p>
+    </section>
+
+    <section class="card">
+      <h2>Список посетителей</h2>
+      <div class="table">
+        <div class="table-row header">
+          <span>Посетитель</span>
+          <span>Телефон</span>
+          <span>Email</span>
+          <span>Дата регистрации</span>
+        </div>
+        <div data-visitor-table-body></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="eventModal" aria-hidden="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Создать событие</h3>
+        <button class="icon-button" data-modal-close>×</button>
+      </div>
+      <form class="form" data-event-form>
+        <label>
+          Название события
+          <input type="text" name="eventName" required placeholder="Мастер-класс" />
+        </label>
+        <label>
+          Комплекс
+          <select name="complexId" data-complex-select required></select>
+        </label>
+        <label>
+          Дата
+          <input type="date" name="eventDate" required />
+        </label>
+        <label>
+          Время начала
+          <input type="time" name="startTime" />
+        </label>
+        <label>
+          Время окончания
+          <input type="time" name="endTime" />
+        </label>
+        <label>
+          Тип события
+          <input type="text" name="eventType" placeholder="Соревнование" />
+        </label>
+        <label>
+          Максимум участников
+          <input type="number" name="maxParticipants" min="1" placeholder="50" />
+        </label>
+        <label>
+          Описание
+          <textarea name="description" rows="3" placeholder="Краткое описание"></textarea>
+        </label>
+        <div class="form-actions">
+          <button class="primary" type="submit">Сохранить</button>
+          <button class="ghost" type="button" data-modal-close>Отмена</button>
+        </div>
+      </form>
+      <p class="status" data-event-status>Готово к добавлению события.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="enrollmentModal" aria-hidden="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Открыть набор</h3>
+        <button class="icon-button" data-modal-close>×</button>
+      </div>
+      <p class="muted">Сделаем объявление о наборе в выбранную секцию.</p>
+      <form class="form" data-enrollment-form>
+        <label>
+          Название секции
+          <input type="text" name="sectionName" readonly />
+        </label>
+        <label>
+          Комплекс
+          <select name="complexId" data-complex-select required></select>
+        </label>
+        <label>
+          Дата старта
+          <input type="date" name="eventDate" required />
+        </label>
+        <label>
+          Время
+          <input type="time" name="startTime" />
+        </label>
+        <label>
+          Максимум участников
+          <input type="number" name="maxParticipants" min="1" placeholder="20" />
+        </label>
+        <div class="form-actions">
+          <button class="primary" type="submit">Опубликовать</button>
+          <button class="ghost" type="button" data-modal-close>Отмена</button>
+        </div>
+      </form>
+      <p class="status" data-enrollment-status>Готово к публикации.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="complexModal" aria-hidden="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Список комплексов</h3>
+        <button class="icon-button" data-modal-close>×</button>
+      </div>
+      <ul class="list" data-complex-list></ul>
+      <p class="status" data-complex-status>Загрузка...</p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>© 2024 SportComplexesDistrictDB • Админ-панель</p>
+  </footer>
+  <script src="js/app.js"></script>
+</body>
+</html>
